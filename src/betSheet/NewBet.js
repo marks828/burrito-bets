@@ -4,8 +4,8 @@ import { nanoid } from 'nanoid';
 function NewBet(props) {
 	const bettors = ['mark', 'nick', 'mike', 'geo', 'david'];
 	const [betDescrtiptionInput, setBetDescrtiptionInput] = useState('');
-	const [bettorOne, setBettorOne] = useState('');
-	const [bettorTwo, setBettorTwo] = useState('');
+	const [bettorOne, setBettorOne] = useState(bettors[0]);
+	const [bettorTwo, setBettorTwo] = useState(bettors[1]);
 
 	
 
@@ -31,6 +31,7 @@ function NewBet(props) {
 					{/* bettor 1 */}
 					<label htmlFor=''>
 						<select
+							value={bettorOne}
 							onChange={(e) => setBettorOne(e.target.value)}
 						>
 							{bettors.map((bettor) => (
@@ -46,6 +47,7 @@ function NewBet(props) {
 					{/* bettor 2 */}
 					<label htmlFor=''>
 						<select
+							value={bettorTwo}
 							onChange={(e) => setBettorTwo(e.target.value)}
 						>
 							{bettors.map((bettor) => (

@@ -16,7 +16,7 @@ function NewBet(props) {
 	
 
 	return (
-		<>
+		<div className=''>
 			<div className='newBet'>
 				<h1>New Bet</h1>
 				<form>
@@ -82,7 +82,7 @@ function NewBet(props) {
 			<button
 			onClick={checkState}
 			>Check Bettor</button>
-		</>
+		</div>
 	);
 }
 

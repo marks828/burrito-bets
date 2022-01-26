@@ -1,14 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BetData from './BetData';
 import NewBet from './NewBet';
 
+const api_base = 'http://localhost:3001';
+
 function BetSheet() {
-	const [betData, setBetData] = useState(BetData);
+	const [betData, setBetData] = useState([]);
+
+	useEffect(() => {
+		GetBets();
+	}, []);
+
+	const GetBets = () => {
+		fetch(api_base + '/bets')
+			.then((response) => response.json())
+			.then((data) => setBetData(data))
+			.catch((error) => console.log('Error' + error));
+	}
+
 	return (
 		<div className='mx-10'>
 			<div className='new-bet'>
-				<NewBet 
-					betData={betData} 
+				<NewBet
+					betData={betData}
 					setBetData={setBetData}
 				/>
 			</div>
@@ -39,10 +53,10 @@ function BetSheet() {
 					</thead>
 					<tbody>
 						{betData.map((bet) => (
-							<tr 
+							<tr
 								key={bet.id}
 								className=''
-								>
+							>
 								<td className='
 								border border-slate-300
 								'>{bet.betDescription}</td>

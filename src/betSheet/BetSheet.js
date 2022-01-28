@@ -2,21 +2,8 @@ import { useState, useEffect } from 'react';
 import BetData from './BetData';
 import NewBet from './NewBet';
 
-const api_base = 'http://localhost:3001';
-
 function BetSheet() {
-	const [betData, setBetData] = useState([]);
-
-	useEffect(() => {
-		GetBets();
-	}, []);
-
-	const GetBets = () => {
-		fetch(api_base + '/bets')
-			.then((response) => response.json())
-			.then((data) => setBetData(data))
-			.catch((error) => console.log('Error' + error));
-	}
+	const [betData, setBetData] = useState(BetData);
 
 	return (
 		<div className='mx-10'>
